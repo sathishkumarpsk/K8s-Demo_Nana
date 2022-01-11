@@ -9,17 +9,33 @@
 #### K8s commands
 
 ##### start Minikube and check status
-    minikube start --vm-driver=hyperkit 
+    minikube start --vm-driver=hyperkit (OR) minikube start --driver docker
     minikube status
+    Install minikube : brew install minikube
+    Start minikube: minikube start --driver docker (or) minikube start --driver=hyperkit
+    Check Status: minikube status
+    Delete minikube cluster: minikube delete
+    Check the k8s cluster running locally: kubectl get node
+
 
 ##### get minikube node's ip address
     minikube ip
+    
+##### To apply local K8s config files and create service
+    kubectl apply -f <yaml_file path>
+    kubectl apply -f mongo-secret.yaml
 
 ##### get basic info about k8s components
     kubectl get node
     kubectl get pod
     kubectl get svc
     kubectl get all
+    kubectl get configmap
+    kubectl get secret
+    
+##### get basic info about k8s components
+    To get commands supported: kubectl --help
+    TO get command + help summary: kubectl get --help
 
 ##### get extended info about components
     kubectl get pod -o wide
@@ -30,7 +46,8 @@
     kubectl describe pod {pod-name}
 
 ##### get application logs
-    kubectl logs {pod-name}
+    To check: kubectl logs {pod-name}
+    To stream: kubectl logs {pod-name} -f
     
 ##### stop your Minikube cluster
     minikube stop
